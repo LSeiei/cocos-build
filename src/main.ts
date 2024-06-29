@@ -13,8 +13,6 @@ import * as core from '@actions/core'
 import axios from 'axios'
 import {exec} from '@actions/exec'
 import {downloadTool, extractZip} from '@actions/tool-cache'
-import * as artifact from '@actions/artifact'
-import * as glob from '@actions/glob'
 
 // import {wait} from './wait'
 
@@ -26,8 +24,7 @@ async function run(): Promise<void> {
     const cocosVersion = core.getInput('cocos_version')
     const cocosType = core.getInput('cocos_type')
     const projectPath = core.getInput('project_path')
-    const platform = core.getInput('platform')
-    const buildPath = core.getInput('build_path')
+    const buildConf = core.getInput('build_conf')
     try {
       const {data} = await (await axios.get(downloadUrls)).data
       const urlList = data[cocosType] as CCDownloadType[]
@@ -44,27 +41,27 @@ async function run(): Promise<void> {
       await extractZip(`${ccZipPath}`, './')
       await exec(`open ./CocosCreator.app`)
       await exec(
-        `./CocosCreator.app/Contents/MacOS/CocosCreator --path ${projectPath} --build "platform=${platform};buildPath=${buildPath}"`
+        `./CocosCreator.app/Contents/MacOS/CocosCreator --project ${projectPath} --build "configPath=${buildConf};"`
       )
-      const artifactClient = artifact.create()
-      const artifactName = 'cocos-build-package'
-      const patterns = `${buildPath}/${platform}`
-      const globber = await glob.create(patterns)
-      const files = await globber.glob()
-      console.log('files :>> ', files)
+      //const artifactClient = artifact.create()
+      //const artifactName = 'cocos-build-package'
+      //const patterns = `${buildPath}/${platform}`
+      //const globber = await glob.create(patterns)
+      //const files = await globber.glob()
+      //console.log('files :>> ', files)
 
-      const rootDirectory = `${buildPath}`
+      //const rootDirectory = `${buildPath}`
       // const options = {
       //   continueOnError: true
       // }
 
-      const uploadResult = await artifactClient.uploadArtifact(
-        artifactName,
-        files,
-        rootDirectory
-        // options
-      )
-      console.log('uploadResult :>> ', uploadResult)
+      //const uploadResult = await artifactClient.uploadArtifact(
+      //  artifactName,
+      //  files,
+      //  rootDirectory
+      //  // options
+      //)
+      //console.log('uploadResult :>> ', uploadResult)
     } catch (error) {
       core.error(error as string)
     }

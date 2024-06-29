@@ -25,15 +25,9 @@ inputs:
     description: 'project path for build'
     default: './'
 
-  platform:
-    required: false
-    description: 'platform to build'
-    default: 'web-mobile'
-
-  build_path:
-    required: false
-    description: 'build path'
-    default: './build'
+  build_conf:
+    required: true
+    description: 'build conf json file'
 
 runs:
   using: 'node12'
