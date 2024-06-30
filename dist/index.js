@@ -28823,7 +28823,19 @@ async function run() {
         const ccZipPath = await (0, tool_cache_1.downloadTool)(cocosUrl, `CocosCreator.zip`);
         await (0, tool_cache_1.extractZip)(`${ccZipPath}`, './');
         await (0, exec_1.exec)(`open ./CocosCreator.app`);
-        await (0, exec_1.exec)(`./CocosCreator.app/Contents/MacOS/CocosCreator --project ${projectPath} --build "configPath=${buildConf};"`);
+        let code = -1;
+        try {
+            code = await (0, exec_1.exec)(`./CocosCreator.app/Contents/MacOS/CocosCreator --project ${projectPath} --build "configPath=${buildConf};"`);
+            core.debug(`====0011 ${code}===`);
+        }
+        catch (e) {
+            core.debug(`====0022 ${code}===`);
+            core.debug(`====11111 ${e.message}===`);
+            core.debug(`====22222 =${e.name}==`);
+            core.debug(`====33333 =${e.stack}==`);
+            core.debug(`====44444 =${e.cause}==`);
+        }
+        core.debug(`====0033 ${code}===`);
         core.debug(`====Cocos build ok ===`);
         //core.debug(`Waiting ${ms} milliseconds ...`)
         //core.setOutput('time', new Date().toTimeString())

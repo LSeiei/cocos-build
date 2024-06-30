@@ -1,7 +1,7 @@
 {
   "name": "cocos-build",
   "description": "Cocos Creator Build Action",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "",
   "private": false,
   "homepage": "https://github.com/actions/typescript-action",
