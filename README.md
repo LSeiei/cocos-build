@@ -39,6 +39,13 @@ steps:
 
 =============================
 
+构建方法:
+1. 修改好代码
+2. 在运行: npm run all
+3. 上传到github,并且打标签:v2.0.x
+
+=============================
+
 # Create a GitHub Action Using TypeScript
 
 [![GitHub Super-Linter](https://github.com/actions/typescript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)
