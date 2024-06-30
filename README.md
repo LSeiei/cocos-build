@@ -1,3 +1,44 @@
+参考:  
+ https://github.com/marketplace/actions/cocos-creator-build  
+ https://github.com/actions/typescript-action
+
+# Cocos Creator Build
+
+This action provides the following functionality for Github Actions users:
+
+- 自动构建 cocos creator项目
+- 需要配置: cocos_url, project_path, build_conf
+- 只能在Mac环境运行
+
+| inputs       | required | description                 | default                                                                                        |
+| ------------ | -------- | --------------------------- | ---------------------------------------------------------------------------------------------- |
+| cocos_url    | true     | cocos creator download urls | 具体路径可以在这里查找: https://creator-api.cocos.com/api/cocoshub/editor_version_list?lang=zh |
+| project_path | false    | project path for build      | ./                                                                                             |
+| build_conf   | false    | build conf file (json)      | ./build_conf.json                                                                              |
+
+## 使用方法
+
+cocos编译参考文档:
+https://docs.cocos.com/creator/3.8/manual/zh/editor/publish/publish-in-command-line.html
+
+See [action.yml]()
+
+**Basic**
+
+```
+steps:
+    - uses: actions/checkout@v2
+
+    - name: Cocos Creator Build
+    uses: xxx/cocos-build@v1.0.1
+    with:
+        cocos_url: https://download.cocos.com/CocosCreator/v3.8.0/CocosCreator-v3.8.0-mac-072014.zip
+        project_path: /user/projectdir
+        build_conf: /user/build.json
+```
+
+=============================
+
 # Create a GitHub Action Using TypeScript
 
 [![GitHub Super-Linter](https://github.com/actions/typescript-action/actions/workflows/linter.yml/badge.svg)](https://github.com/super-linter/super-linter)

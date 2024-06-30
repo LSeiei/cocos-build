@@ -1,23 +1,33 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Cocos Creator Build'
+description: 'A github action for cocos creator build'
+author: ''
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'heart'
-  color: 'red'
+  icon: 'activity'
+  color: 'blue'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  cocos_url:
     required: true
-    default: '1000'
+    description: 'cocos creator download urls'
+    default: ''
+
+  project_path:
+    required: false
+    description: 'project path for build'
+    default: './'
+
+  build_conf:
+    required: false
+    description: 'build conf json file'
+    default: './build_conf.json'
 
 # Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
+#outputs:
+#  time:
+#    description: 'Your output description here'
 
 runs:
   using: node20
