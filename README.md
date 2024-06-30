@@ -30,7 +30,7 @@ steps:
     - uses: actions/checkout@v2
 
     - name: Cocos Creator Build
-    uses: xxx/cocos-build@v1.0.1
+    uses: LSeiei/cocos-build@v2.0.1
     with:
         cocos_url: https://download.cocos.com/CocosCreator/v3.8.0/CocosCreator-v3.8.0-mac-072014.zip
         project_path: /user/projectdir
